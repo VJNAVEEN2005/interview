@@ -1,10 +1,4 @@
-#include<iostream>
-#include<math.h>
-using namespace std;
-
-int main(){
-
-    double a = 2.3;
+double a = 2.3;
     double b = 4;
     double c = 5.6;
 
@@ -27,13 +21,7 @@ int main(){
     else{
         cout<<"Roots are complex"<<endl;
         ans1 = (-b/(2*a));
-        cans1 = sqrt(-d) / (2*a);    // Take the square root of the positive value of d
-        /*
-        The issue is that when the discriminant 𝑑=𝑏^2−4𝑎𝑐 is negative,
-        taking the square root of d in sqrt(d) results in NaN (not a number)
-        */
+        cans1 = sqrt(d) / (2*a);
+
         cout<<ans1<<"+i"<<cans1<<endl<<ans1<<"-i"<<cans1;
     }
-
-
-}
