@@ -779,3 +779,116 @@ public class _11_reverse_number{
     }
 }
 ```
+
+## **12. Check whether a number is a palindrome.**
+
+### c++:
+
+```cpp
+// Normal Method
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+int main(){
+
+    int a = 39493;
+    int N = a;
+    int ans = 0;
+    int count = 0;
+
+    while(N != 0){
+        N = N / 10;
+        count++;        
+    }
+
+    N = a;
+
+    while(a != 0){
+        count--;
+        ans = ans + (a%10)*pow(10,count);
+        a = a / 10;
+    }
+
+    N == ans ? cout<<"Palindrome" : cout<<"Not Palindrome" ;
+     
+}
+```
+
+### java:
+
+```java
+// By using StringBuilder
+public class _12_palindrome{
+    public static void main(String[] args){
+
+        int a = 39493;
+        String N = String.valueOf(a);
+
+        StringBuilder temp = new StringBuilder();
+
+        temp.append(N);
+        temp.reverse();
+
+        N = String.valueOf(temp);
+
+        String output = (a == Integer.valueOf(N) ? "Palindrome" : "Not Palindrome");
+        
+        System.out.println(output);
+
+    }
+}
+```
+
+## 13. Reverse a String
+
+cpp:
+
+```java
+#include<iostream>
+using namespace std;
+
+int main(){
+    string str = "Hello";
+    int start = 0;
+    int end = str.length()-1;
+
+    while(start<end){
+        swap(str[start],str[end]);
+        start++;
+        end--;
+    }
+
+    cout<<str;
+}
+```
+
+14. Single number
+cpp: 
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int singleNumber(vector<int>& nums) {
+    int result = 0;
+    for (size_t i = 0; i < nums.size(); ++i) {
+        result = result ^ nums[i];                        // XOR - operation
+    }
+    return result;
+}
+
+int main() {
+   
+    int arr[] = {4, 1, 2, 1, 2};
+    vector<int> nums(arr, arr + sizeof(arr) / sizeof(arr[0]));
+
+    // Find and display the single number
+    int single = singleNumber(nums);
+    cout << "The single number is: " << single << endl;
+
+    return 0;
+}
+
+```
