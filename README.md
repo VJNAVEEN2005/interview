@@ -2,6 +2,8 @@
 
 [https://github.com/VJNAVEEN2005/interview](https://github.com/VJNAVEEN2005/interview)
 
+# Interview
+
 ## **1. Find the largest number among the three numbers.**
 
 ### c++:
@@ -863,7 +865,8 @@ int main(){
 }
 ```
 
-14. Single number
+## 14. Single number
+
 cpp: 
 
 ```cpp
@@ -890,5 +893,135 @@ int main() {
 
     return 0;
 }
+
+```
+
+## 15. Union
+
+cpp: 
+
+```cpp
+
+#include <iostream>
+#include <vector>
+#include <set>
+using namespace std;
+
+void findUnion(const vector<int>& arr1, const vector<int>& arr2) {
+    set<int> unionSet;
+
+    // Insert elements of the first array into the set
+    for (size_t i = 0; i < arr1.size(); ++i) {
+        unionSet.insert(arr1[i]);
+    }
+
+    // Insert elements of the second array into the set
+    for (size_t i = 0; i < arr2.size(); ++i) {
+        unionSet.insert(arr2[i]);
+    }
+
+    // Display the union of the two arrays
+    cout << "Union: { ";
+    for (set<int>::iterator it = unionSet.begin(); it != unionSet.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << "}" << endl;
+}
+
+int main() {
+    // Example input
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {4, 5, 6, 7, 8};
+
+    // Convert to vectors for compatibility with the function
+    vector<int> array1(arr1, arr1 + sizeof(arr1) / sizeof(arr1[0]));
+    vector<int> array2(arr2, arr2 + sizeof(arr2) / sizeof(arr2[0]));
+
+    // Find and display the union
+    findUnion(array1, array2);
+
+    return 0;
+}
+
+
+
+```
+
+## 16. Missing Number Using XOR
+
+cpp: 
+
+```cpp
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int findMissingNumber(const vector<int>& nums) {
+    int n = nums.size();
+    int xorAll = 0, xorNums = 0;
+
+    // XOR all numbers from 0 to n
+    for (int i = 0; i <= n; ++i) {
+        xorAll ^= i;
+    }
+
+    // XOR all elements in the array
+    for (size_t i = 0; i < nums.size(); ++i) {
+        xorNums ^= nums[i];
+    }
+
+    return xorAll ^ xorNums; // The missing number
+}
+
+int main() {
+    int arr[] = {3, 0, 1};
+    vector<int> nums(arr, arr + sizeof(arr) / sizeof(arr[0])); // Initialize vector for C++98
+
+    cout << "Missing Number: " << findMissingNumber(nums) << endl;
+    return 0;
+}
+
+
+
+```
+
+## 17. Best Time To Buy And Sell Stock
+
+cpp: 
+
+```cpp
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int maxProfit(const vector<int>& prices) {
+    int minPrice = 1e9; // Set an initial large value for minimum price
+    int maxProfit = 0;
+
+    for (size_t i = 0; i < prices.size(); ++i) {
+        // Update the minimum price so far
+        if (prices[i] < minPrice) {
+            minPrice = prices[i];
+        }
+        // Calculate profit if we sell at current price and update maxProfit
+        else if (prices[i] - minPrice > maxProfit) {
+            maxProfit = prices[i] - minPrice;
+        }
+    }
+
+    return maxProfit;
+}
+
+int main() {
+    // Initialize the vector using an array and constructor
+    int arr[] = {7, 1, 5, 3, 6, 4};
+    vector<int> prices(arr, arr + sizeof(arr) / sizeof(arr[0])); // Convert array to vector
+
+    cout << "Maximum Profit: " << maxProfit(prices) << endl;
+    return 0;
+}
+
 
 ```
